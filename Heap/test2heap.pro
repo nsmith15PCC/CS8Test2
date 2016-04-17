@@ -3,3 +3,10 @@ CONFIG += console
 CONFIG += c++11
 CONFIG -= app_bundle
 CONFIG -= qt
+
+HEADERS += \
+    hnode.h \
+    heap.h \
+    horchard.h
+
+SOURCES +=
