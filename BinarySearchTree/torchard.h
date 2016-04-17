@@ -20,6 +20,10 @@ public:
 
     tnode getMax();
 
+    void balance();
+
+    vector<tnode> mostFrequentWords();
+
     size_t paragraphs, lines, syllables, words;
 
 private:
@@ -58,6 +62,23 @@ tnode torchard::getMax()
     tnode themax = *std::max_element(maxofEach.begin(), maxofEach.end(), compareSize);
 
     maxofEach.at(themax.word[0]) = theorchard.at(themax.word[0]).getMax();
+}
+
+void torchard::balance()
+{
+    for (vector<bst>::iterator it = theorchard.begin(); it != theorchard.end(); ++it)
+        (*it).balance();
+}
+
+vector<tnode> torchard::mostFrequentWords()
+{
+    vector<tnode> mostFrequent;
+    for (size_t i = 0; i < 10; ++i)
+    {
+        mostFrequent.push_back(getMax());
+    }
+    std::sort(mostFrequent.begin(), mostFrequent.end());
+    return mostFrequent;
 }
 
 bool torchard::compareSize(const tnode &x, const tnode &y)
