@@ -9,6 +9,8 @@
 using std::vector;
 using std::string;
 using std::ostream;
+using std::endl;
+using std::setw;
 
 class tnode
 {
@@ -58,7 +60,7 @@ operator==(const tnode &x, const tnode &y)
 
 operator<(const tnode &x, const string &y)
 {
-    return x.word < y
+    return x.word < y;
 }
 
 

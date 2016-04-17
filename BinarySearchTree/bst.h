@@ -49,7 +49,7 @@ public:
 
     bool balanced()
     {
-        return (abs(depth(thetree[root()].child(0)) - depth(thetree[root()].child(1))) <= 1);
+        return (abs(depth(thetree[root()].children[0]) - depth(thetree[root()].children[1])) <= 1);
     }
 
     void balance();
@@ -62,7 +62,7 @@ public:
 
     bool remove(const string &w)
     {
-        return removeHELPER(thetree[0].child(1), w);
+        return removeHELPER(thetree[0].children[1], w);
     }
 
     size_t find (const string &d);

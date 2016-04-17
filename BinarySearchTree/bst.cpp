@@ -1,6 +1,6 @@
 #include "bst.h"
 
-void bst<string>::insertHELPER (size_t &r, const string &w, size_t p, size_t l)
+void bst::insertHELPER (size_t &r, const string &w, size_t p, size_t l)
 {
     if (r)
     {
@@ -16,12 +16,12 @@ void bst<string>::insertHELPER (size_t &r, const string &w, size_t p, size_t l)
     else
     {
         r = thetree.size();
-        thetree.push_back(tnode<string> (w, p, l));
+        thetree.push_back(tnode(w, p, l));
     }
 }
 
 
-void bst<string>::deallocate (size_t &r,size_t index)
+void bst::deallocate (size_t &r,size_t index)
 {
     if (r == thetree.size() - 1)
     {
@@ -36,7 +36,7 @@ void bst<string>::deallocate (size_t &r,size_t index)
 }
 
 
-bool bst<string>::removeMAX (size_t& r, string &d, vector<size_t> &p, vector<size_t> &l)
+bool bst::removeMAX (size_t& r, string &d, vector<size_t> &p, vector<size_t> &l)
 {
     if (thetree[r].children[1])
         return removeMAX(thetree[r].children[1], d, p, l);
@@ -57,14 +57,14 @@ bool bst<string>::removeMAX (size_t& r, string &d, vector<size_t> &p, vector<siz
 
 
 
-bool bst<string>::removeHELPER (size_t& r, const string &w)
+bool bst::removeHELPER (size_t& r, const string &w)
 {
     if (r)
     {
         if (thetree[r] == w)
         {
-            thesize -= thetree[r].size
-                    if (! thetree[r].children[0])
+            thesize -= thetree[r].size;
+            if(! thetree[r].children[0])
             {
                 size_t temp = r;
                 r = thetree[r].children[1];
@@ -80,7 +80,7 @@ bool bst<string>::removeHELPER (size_t& r, const string &w)
             }
         }
         else
-            return removeHELPER(thetree[r].child(thetree[r] < w), w);
+            return removeHELPER(thetree[r].children[thetree[r] < w], w);
     }
     else
         return false;
@@ -99,10 +99,10 @@ tnode bst::getMax()
     return n;
 }
 
-int bst<string>::depth (size_t r)
+int bst::depth (size_t r)
 {
     if(r)
-        return 1 + max(depth(thetree[r].child(0)), depth(thetree[r].child(1)));
+        return 1 + max(depth(thetree[r].children[0]), depth(thetree[r].children[1]));
     else
         return 0;
 }
@@ -121,7 +121,7 @@ void bst::maxIndex(size_t r, size_t &m, size_t &s)
     }
 }
 
-void bst<string>::balance()
+void bst::balance()
 {
     int size = 0;
     size_t dummy = 0;
@@ -130,33 +130,32 @@ void bst<string>::balance()
 }
 
 
-void bst<string>::tree_to_vine ( size_t &root, int &size )
+void bst::tree_to_vine ( size_t &root, int &size )
 {
     size_t vineTail, remainder, tempPtr;
     vineTail = root;
-    remainder = thetree[vineTail].child(1);
+    remainder = thetree[vineTail].children[1];
     size = 0;
     while ( remainder )
     {
-        if ( !thetree[remainder].child(0) )
+        if ( !thetree[remainder].children[0] )
         {
             vineTail = remainder;
-            remainder = thetree[remainder].child(1);
+            remainder = thetree[remainder].children[1];
             size++;
         }
         else
         {
-            tempPtr = thetree[remainder].child(0);
-            thetree[remainder].child(0) = thetree[tempPtr].child(1);
-            thetree[tempPtr].child(1) = remainder;
+            tempPtr = thetree[remainder].children[0];
+            thetree[remainder].children[0] = thetree[tempPtr].children[1];
+            thetree[tempPtr].children[1] = remainder;
             remainder = tempPtr;
-            thetree[vineTail].child(1) = tempPtr;
+            thetree[vineTail].children[1] = tempPtr;
         }
     }
 }
 
-template<typename string>
-int bst<string>::FullSize (int size)
+int bst::FullSize (int size)
 {
     int Rtn = 1;
     while ( Rtn <= size )
@@ -165,7 +164,7 @@ int bst<string>::FullSize (int size)
 }
 
 
-void bst<string>::vine_to_tree ( size_t &root, int size )
+void bst::vine_to_tree ( size_t &root, int size )
 {
     int full_count = FullSize (size);
     compression(root, size - full_count);
@@ -174,16 +173,16 @@ void bst<string>::vine_to_tree ( size_t &root, int size )
 }
 
 
-void bst<string>::compression ( size_t &root, int count )
+void bst::compression ( size_t &root, int count )
 {
     size_t scanner = root;
 
     for ( int j = 0; j < count; j++ )
     {
-        size_t child = thetree[scanner].child(RIGHT);
-        thetree[scanner].child(RIGHT) = thetree[child].child(RIGHT);
-        scanner = thetree[scanner].child(RIGHT);
-        thetree[child].child(RIGHT) = thetree[scanner].child(LEFT);
-        thetree[scanner].child(LEFT) = child;
+        size_t child = thetree[scanner].children[1];
+        thetree[scanner].children[1] = thetree[child].children[1];
+        scanner = thetree[scanner].children[1];
+        thetree[child].children[1] = thetree[scanner].children[0];
+        thetree[scanner].children[0] = child;
     }
 }
