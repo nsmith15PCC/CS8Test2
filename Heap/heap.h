@@ -4,14 +4,14 @@
 #include <algorithm>
 #include "hnode.h"
 #include <iostream>
-#include <deque>\
+#include <vector>\
 
-using std::deque;
+using std::vector;
 
 class heap
 {
 public:
-    heap() {}
+    heap() { theheap.reserve(1024); }
 
     size_t size() {return theheap.size();}
 
@@ -35,7 +35,7 @@ public:
     }
 
 private:
-    deque<hnode> theheap;
+    vector<hnode> theheap;
 
 };
 

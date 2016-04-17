@@ -1,78 +1,93 @@
-#ifndef TEST2BSTNODE
-#define TEST2BSTNODE
+#ifndef TNODE
+#define TNODE
 
-#include "node.h"
+#include <iostream>
+#include <iomanip>
 #include <vector>
+#include <string>
 
 using std::vector;
+using std::string;
+using std::ostream;
 
-template <typename data_type>
-class tnode : public node
+class tnode
 {
 public:
-    tnode(const data_type &w, size_t p, size_t l): node(w)
-    {
-        paragraphs.push_back(p);
-        lines.push_back(l);
-    }
+    tnode(const string &w = string(), size_t p = 0, size_t l = 0) : word(w), size(1), paragraphs(1,p), lines(1,l), children {0,0} {}
 
-    void add (size_t p, size_t l);
+    void add(size_t p, size_t l) { paragraphs.push_back(p); lines.push_back(l); ++size;}
 
-    size_t count();
+    friend inline
+    operator<(const tnode &x, const tnode &y);
 
-    template <typename D>
+    friend inline
+    operator==(const tnode &x, const tnode &y);
+
     friend
-    std::ostream& operator<<(ostream& outs, const tnode<data_type> &n);
+    operator<(const tnode &x, const string &y);
 
+    friend inline
+    operator==(const tnode &x, const string &y);
+
+    friend inline
+    operator<(const string &x, const tnode &y);
+
+    friend inline
+    operator==(const string &x, const tnode &y);
+
+    friend inline
+    ostream& operator<<(ostream& outs, const tnode &n);
+
+
+    // Member variables
+    string word;
+    size_t children[2], size;
     vector<size_t> paragraphs, lines;
 };
 
-template <typename data_type>
-tnode<data_type>::tnode(const data_type &word, size_t p, size_t l)
+operator<(const tnode &x, const tnode &y)
 {
-    paragraphs.push_back(p);
-    lines.push_back(l);
+    return x.word < y.word;
 }
 
-template <typename data_type>
-void tnode<data_type>::add (size_t p, size_t l)
+operator==(const tnode &x, const tnode &y)
 {
-paragraphs.push_back(p);
-lines.push_back(l);
+    return x.word == y.word;
 }
 
-template <typename data_type>
-size_t tnode<data_type>::count()
+
+operator<(const tnode &x, const string &y)
 {
-    return lines.size();
+    return x.word < y
 }
 
-template <typename D>
-std::ostream& operator<<(std::ostream& outs, const tnode<data_type> &n)
+
+operator==(const tnode &x, const string &y)
 {
-    outs<<n.data()<<", Frequency: "<<n.count()<<endl<<setw(10)<<"Paragraph"<<setw(10)<<"Line"<<endl;
-    for(size_t i = 0; i < n.lines.size(); ++i)
+    return x.word == y;
+}
+
+operator<(const string &x, const tnode &y)
+{
+    return x < y.word;
+}
+
+operator==(const string &x, const tnode &y)
+{
+    return x == y.word;
+}
+
+ostream& operator<<(ostream& outs, const tnode &n)
+{
+    outs<<"Frequency: "<<n.size<<endl<<n.word<<endl;
+    outs<<setw(10)<<"Paragraph"<<setw(10)<<"Line"<<endl;
+
+    for (size_t i = 0; i < n.size; ++i)
     {
         outs<<setw(10)<<n.paragraphs[i]<<setw(10)<<n.lines[i]<<endl;
     }
 }
 
-template <typename data_type>
-vector<size_t>& tnode<data_type>::paragraphs()
-{
-    return paragraphs;
-}
 
-template <typename data_type>
-const vector<size_t>& tnode<data_type>::paragraphs() const
-{
-    return paragraphs;
-}
+#endif // TNODE
 
-template <typename data_type>
-vector<size_t>& tnode<data_type>::lines();
-
-template <typename data_type>
-const vector<size_t>& tnode<data_type>::lines() const;
-
-#endif // TEST2BSTNODE

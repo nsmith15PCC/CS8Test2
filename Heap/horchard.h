@@ -59,6 +59,7 @@ vector<size_t> horchard::wordsperLetter ()
     {
         counts.push_back(theorchard.at(i).size());
     }
+    return counts;
 }
 
 

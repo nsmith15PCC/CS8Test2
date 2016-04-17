@@ -1,15 +1,14 @@
 TEMPLATE = app
-
-CONFIG += console
-CONFIG += c++11
+CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-HEADERS += \
-    torchard.h \
-    node.h \
-    bst.h \
-    tnode.h
+SOURCES += main.cpp \
+    bst.cpp \
+    tnode.cpp
 
-SOURCES += \
-    main.cpp
+HEADERS += \
+    tnode.h \
+    bst.h \
+    torchard.h
+
