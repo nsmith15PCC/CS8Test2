@@ -14,15 +14,16 @@ tnode torchard::getMax()
 {
     if (maxofEach.empty())
     {
-        for (size_t i = 0; i < 26; ++i)
+        for (vector<bst>::iterator it = theorchard.begin(); it != theorchard.end(); ++it)
         {
-            maxofEach.push_back(theorchard.at(i).getMax());
+            maxofEach.push_back((*it).getMax());
         }
     }
 
     tnode themax = *std::max_element(maxofEach.begin(), maxofEach.end(), [](const tnode &x, const tnode &y) {return x.size < y.size;});
 
-    maxofEach.at(themax.word[0]) = theorchard.at(themax.word[0]).getMax();
+    maxofEach.at(themax.word[0] - 'A') = theorchard.at(themax.word[0]- 'A').getMax();
+    return themax;
 }
 
 void torchard::balance()

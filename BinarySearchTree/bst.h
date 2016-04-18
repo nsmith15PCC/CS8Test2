@@ -19,7 +19,7 @@ enum BSTERRORS {EMPTY};
 class bst
 {
 public:
-    bst() : thetree(1), thesize(0) {thetree.reserve(1024);}
+    bst() : thetree(1), thesize(0) {thetree.reserve(2048);}
 
     size_t &root()
     {
@@ -77,7 +77,7 @@ private:
 
     void insertHELPER (size_t &r, const string &w, size_t p, size_t l);
     bool removeHELPER (size_t& r, const string &w);
-    bool removeMAX (size_t& r, string &d, vector<size_t> &p, vector<size_t> &l);
+    bool removeMAX (size_t& r, string &d, vector<size_t> &p, vector<size_t> &l, size_t &s);
 
     void deallocate (size_t &r, size_t index);
 

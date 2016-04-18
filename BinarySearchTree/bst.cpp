@@ -36,15 +36,16 @@ void bst::deallocate (size_t &r,size_t index)
 }
 
 
-bool bst::removeMAX (size_t& r, string &d, vector<size_t> &p, vector<size_t> &l)
+bool bst::removeMAX (size_t& r, string &d, vector<size_t> &p, vector<size_t> &l, size_t &s)
 {
     if (thetree[r].children[1])
-        return removeMAX(thetree[r].children[1], d, p, l);
+        return removeMAX(thetree[r].children[1], d, p, l, s);
     else
     {
         d = thetree[r].word;
         p = thetree[r].paragraphs;
         l = thetree[r].lines;
+        s = thetree[r].size;
         size_t dlt = r;
         r = thetree[r].children[0];
         if (dlt != thetree.size() -1 )
@@ -76,7 +77,7 @@ bool bst::removeHELPER (size_t& r, const string &w)
             }
             else
             {
-                return removeMAX(thetree[r].children[0], thetree[r].word, thetree[r].paragraphs, thetree[r].lines);
+                return removeMAX(thetree[r].children[0], thetree[r].word, thetree[r].paragraphs, thetree[r].lines, thetree[r].size);
             }
         }
         else
@@ -90,9 +91,9 @@ tnode bst::getMax()
 {
     if (empty())
         return tnode();
+
     tnode themax= *std::max_element( thetree.begin(), thetree.end(), [](const tnode &x, const tnode &y) {return x.size < y.size;} );
     remove( themax.word );
-
     return themax;
 }
 

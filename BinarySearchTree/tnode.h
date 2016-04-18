@@ -21,7 +21,8 @@ public:
     void add(size_t p, size_t l)
     {
         paragraphs.push_back(p);
-        lines.push_back(l); ++size;
+        lines.push_back(l);
+        ++size;
     }
 
     friend
