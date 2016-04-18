@@ -4,10 +4,12 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    bst.cpp
+    bst.cpp \
+    parser.cpp
 
 HEADERS += \
     tnode.h \
     bst.h \
-    torchard.h
+    torchard.h \
+    parser.h
 
