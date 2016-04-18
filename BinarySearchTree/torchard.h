@@ -30,7 +30,7 @@ public:
 
     vector<tnode> mostFrequentWords();
 
-    size_t paragraphs, lines, syllables, words;
+    size_t paragraphs, lines, syllables, words, sentences;
 
 private:
     vector<bst> theorchard;

@@ -5,11 +5,13 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     bst.cpp \
+    parser.cpp \
     torchard.cpp \
     tnode.cpp
 
 HEADERS += \
     tnode.h \
     bst.h \
-    torchard.h
+    torchard.h \
+    parser.h
 
