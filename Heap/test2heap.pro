@@ -7,6 +7,9 @@ CONFIG -= qt
 HEADERS += \
     hnode.h \
     heap.h \
-    horchard.h
+    horchard.h \
+    tnode.h
 
-SOURCES +=
+SOURCES += \
+    horchard.cpp \
+    main.cpp

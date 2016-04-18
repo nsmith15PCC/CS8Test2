@@ -3,14 +3,14 @@
 #include <fstream>
 #include <sstream>
 #include <ctime>
-#include "torchard.h"
+#include "horchard.h"
 
 using namespace std;
 
 int main()
 {
     ifstream ifs("warandpeace.txt");
-    torchard theorchard;
+    horchard theorchard;
     string line;
     clock_t a, b;
 
@@ -30,9 +30,11 @@ int main()
         {
             theorchard.insert(word, 1, 1);
         }
+//        cout<<"last line = "<<line<<endl;
+
     }
 
-    cout<< "The Size = "<<theorchard.size()<<endl;
+    cout<< theorchard.size();
     b = clock();
 
     cout<<"Time = "<<(double)(b-a)/CLOCKS_PER_SEC<<endl;

@@ -88,15 +88,12 @@ bool bst::removeHELPER (size_t& r, const string &w)
 
 tnode bst::getMax()
 {
-    size_t themax(0), itssize(0);
+    if (empty())
+        return tnode();
+    tnode themax= *std::max_element( thetree.begin(), thetree.end(), [](const tnode &x, const tnode &y) {return x.size < y.size;} );
+    remove( themax.word );
 
-    maxIndex(root(), themax, itssize);
-
-    tnode n = thetree[themax];
-
-    remove(thetree[themax].word);
-
-    return n;
+    return themax;
 }
 
 int bst::depth (size_t r)
@@ -105,20 +102,6 @@ int bst::depth (size_t r)
         return 1 + max(depth(thetree[r].children[0]), depth(thetree[r].children[1]));
     else
         return 0;
-}
-
-void bst::maxIndex(size_t r, size_t &m, size_t &s)
-{
-    if (r)
-    {
-        if ( thetree[r].size > s )
-        {
-            m = r;
-            s = thetree[r].size;
-        }
-        maxIndex(thetree[r].children[0], m, s);
-        maxIndex(thetree[r].children[1], m, s);
-    }
 }
 
 void bst::balance()

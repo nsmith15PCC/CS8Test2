@@ -5,7 +5,9 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     bst.cpp \
-    parser.cpp
+    parser.cpp \
+    torchard.cpp \
+    tnode.cpp
 
 HEADERS += \
     tnode.h \
