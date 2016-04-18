@@ -27,24 +27,24 @@ void parser::checkFile(ifstream &in, string filename)
 void getText(ifstream &in, string filename, torchard& orchard)
 {
     string line, word;
-    int pos, paragraphs, lines;
+    size_t pos, paragraphs(0), lines(0);
     in.open(filename+".txt");
     stringstream ss;
 
     while(getline(in, line))
     {
         if(line == "")
-            paragraphs++;
+            ++paragraphs;
         else
         {
             lines++;
-            while(pos = line.find_first_not_of("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!.?") < string::npos)
+            while((pos = line.find_first_not_of("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!.?")) < string::npos)
             {
                 line.erase(pos,1);
                 line.insert(pos, " ");
             }
             pos = 0;
-            while(pos = line.find_first_of(".?!") < string::npos)
+            while((pos = line.find_first_of(".?!")) < string::npos)
             {
                 orchard.sentences++;
                 line.erase(pos,1);
