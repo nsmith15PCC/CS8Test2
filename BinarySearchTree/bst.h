@@ -65,6 +65,7 @@ public:
         return removeHELPER(thetree[0].children[1], w);
     }
 
+
     size_t find (const string &d);
 
     tnode getMax();
@@ -81,8 +82,6 @@ private:
     void deallocate (size_t &r, size_t index);
 
     int depth(size_t r);
-
-    void maxIndex(size_t r, size_t &m, size_t &s);
 
     void tree_to_vine (size_t &root, int &size );
     void vine_to_tree ( size_t &root, int size );

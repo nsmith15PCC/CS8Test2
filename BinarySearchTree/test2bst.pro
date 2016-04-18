@@ -4,7 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    bst.cpp
+    bst.cpp \
+    torchard.cpp
 
 HEADERS += \
     tnode.h \
