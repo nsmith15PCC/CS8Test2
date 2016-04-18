@@ -26,6 +26,8 @@ public:
 
     void balance();
 
+    size_t size();
+
     vector<tnode> mostFrequentWords();
 
     size_t paragraphs, lines, syllables, words;
@@ -34,5 +36,6 @@ private:
     vector<bst> theorchard;
     vector<tnode> maxofEach;
 };
+
 
 #endif // TORCHARD

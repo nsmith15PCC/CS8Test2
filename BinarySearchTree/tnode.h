@@ -25,37 +25,37 @@ public:
     }
 
     friend
-    operator<(const tnode &x, const tnode &y)
+    bool operator<(const tnode &x, const tnode &y)
     {
         return x.word < y.word;
     }
 
     friend
-    operator==(const tnode &x, const tnode &y)
+    bool operator==(const tnode &x, const tnode &y)
     {
         return x.word == y.word;
     }
 
     friend
-    operator<(const tnode &x, const string &y)
+    bool operator<(const tnode &x, const string &y)
     {
         return x.word < y;
     }
 
     friend
-    operator==(const tnode &x, const string &y)
+    bool operator==(const tnode &x, const string &y)
     {
         return x.word == y;
     }
 
     friend
-    operator<(const string &x, const tnode &y)
+    bool operator<(const string &x, const tnode &y)
     {
         return x < y.word;
     }
 
     friend
-    operator==(const string &x, const tnode &y)
+    bool operator==(const string &x, const tnode &y)
     {
         return x == y.word;
     }
@@ -74,16 +74,5 @@ public:
     size_t children[2], size;
     vector<size_t> paragraphs, lines;
 };
-
-ostream& operator<<(ostream& outs, const tnode &n)
-{
-    outs<<"Frequency: "<<n.size<<endl<<n.word<<endl;
-    outs<<setw(10)<<"Paragraph"<<setw(10)<<"Line"<<endl;
-
-    for (size_t i = 0; i < n.size; ++i)
-    {
-        outs<<setw(10)<<n.paragraphs[i]<<setw(10)<<n.lines[i]<<endl;
-    }
-}
 
 #endif // TNODE

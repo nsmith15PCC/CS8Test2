@@ -20,7 +20,7 @@ tnode torchard::getMax()
         }
     }
 
-    tnode themax = *std::max_element(maxofEach.begin(), maxofEach.end(), compareSize);
+    tnode themax = *std::max_element(maxofEach.begin(), maxofEach.end(), [](const tnode &x, const tnode &y) {return x.size < y.size;});
 
     maxofEach.at(themax.word[0]) = theorchard.at(themax.word[0]).getMax();
 }
@@ -40,4 +40,12 @@ vector<tnode> torchard::mostFrequentWords()
     }
     std::sort(mostFrequent.begin(), mostFrequent.end());
     return mostFrequent;
+}
+
+size_t torchard::size()
+{
+    size_t thesize(0);
+    for (vector<bst>::iterator it = theorchard.begin(); it != theorchard.end(); ++it)
+        thesize += (*it).size();
+    return thesize;
 }

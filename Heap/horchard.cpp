@@ -1,4 +1,5 @@
 #include "horchard.h"
+#include "tnode.h"
 
 vector<size_t> horchard::wordsperLetter ()
 {
@@ -27,7 +28,7 @@ vector<tnode> horchard::maxofEach()
         theMaxes.push_back(topWord);
 
         if (theMaxes.size() > 10);
-            theMaxes.erase(std::min_element(theMaxes.begin(), theMaxes.end(), compareSize));
+            theMaxes.erase(std::min_element(theMaxes.begin(), theMaxes.end(), [](const tnode &x, const tnode &y) {return x.size < y.size;}));
     }
 
     std::sort(theMaxes.begin(), theMaxes.end());

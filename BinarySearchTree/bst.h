@@ -19,7 +19,7 @@ enum BSTERRORS {EMPTY};
 class bst
 {
 public:
-    bst() : thetree(1) {thetree.reserve(1024);}
+    bst() : thetree(1), thesize(0) {thetree.reserve(1024);}
 
     size_t &root()
     {

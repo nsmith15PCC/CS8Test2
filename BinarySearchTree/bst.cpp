@@ -90,7 +90,7 @@ tnode bst::getMax()
 {
     if (empty())
         return tnode();
-    tnode themax= *std::max_element( thetree.begin(), thetree.end(), compareSize );
+    tnode themax= *std::max_element( thetree.begin(), thetree.end(), [](const tnode &x, const tnode &y) {return x.size < y.size;} );
     remove( themax.word );
 
     return themax;

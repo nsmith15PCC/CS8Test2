@@ -37,6 +37,14 @@ public:
             theorchard.pop_back();
     }
 
+    size_t size()
+    {
+        size_t thesize = 0;
+        for (vector<heap>::iterator it = theorchard.begin(); it != theorchard.end(); ++it)
+            thesize += (*it).size();
+        return thesize;
+    }
+
     vector<size_t> wordsperLetter();
 
     vector<tnode> maxofEach();

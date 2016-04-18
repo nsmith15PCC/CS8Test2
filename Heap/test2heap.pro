@@ -11,4 +11,5 @@ HEADERS += \
     tnode.h
 
 SOURCES += \
-    horchard.cpp
+    horchard.cpp \
+    main.cpp
