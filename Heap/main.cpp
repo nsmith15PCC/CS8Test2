@@ -3,21 +3,24 @@
 #include <fstream>
 #include <sstream>
 #include <ctime>
+#include "parser.h"
 #include "horchard.h"
 
 using namespace std;
 
 int main()
 {
-    ifstream ifs("warandpeace.txt");
+//    ifstream ifs("warandpeace.txt");
+    ifstream ifs;
     horchard theorchard;
-    string line;
+    string filename, line;
     clock_t a, b;
-
+    parser block;
     a = clock();
+
 //    while (!ifs.eof())
 //    {
-//        getline (ifs, line);
+//        getline(ifs, line);
 //        size_t pos;
 //        string word;
 //        stringstream ss;
@@ -32,25 +35,30 @@ int main()
 //        }
 //    }
 
+    block.checkFile(ifs, filename);
+
     block.getText(ifs, filename, theorchard);
 
-    theorchard.balance();
-
-    double avgNum = theorchard.words*1./theorchard.sentences, syllables=avgNum/3;
-    int level = ((0.39*avgNum)+(11.8*syllables)-15.59);
-
-    cout<< "The number of words = "<<theorchard.size()<<endl
-        << "The number of paragraphs = "<<theorchard.paragraphs<<endl
-        << "The reading level = "<< level<<endl;
-
-cout<<theorchard;
-
+    cout<<theorchard;
 
     b = clock();
 
     cout<<"Runtime = "<<(double)(b-a)/CLOCKS_PER_SEC<<endl;
 
+    cout<<"Would you like to write this summary to file? ";
+    getline (cin, line);
+    if (toupper(line[0]) == 'Y')
+    {
+        cout<<"Please enter your destination filename: ";
+        getline(cin, line);
+        ofstream ofs (line);
+        theorchard = horchard();
+        block.getText(ifs, filename, theorchard);
+    ofs<<theorchard;
+        ofs.close();
+        cout<<"Successfully written to file!"<<endl;
+    }
 
-
+cout<<"Goodbye!"<<endl;
     return 0;
 }
