@@ -36,6 +36,9 @@ public:
 
 private:
     vector<hnode> theheap;
+    void reheapifyUp(size_t child_index);
+    void reheapifyDown(size_t parent_index);
+
 
 };
 

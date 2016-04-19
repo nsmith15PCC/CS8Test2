@@ -14,4 +14,5 @@ HEADERS += \
 SOURCES += \
     horchard.cpp \
     main.cpp \
-    parser.cpp
+    parser.cpp \
+    heap.cpp
