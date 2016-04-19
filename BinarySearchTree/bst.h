@@ -33,7 +33,7 @@ public:
 
     bool empty()
     {
-        return thetree.empty();
+        return !(thetree.size()-1);
     }
 
     size_t size()
@@ -59,21 +59,25 @@ public:
         ++thesize;
         insertHELPER(thetree[0].children[1], w, p, l);
         if (!balanced())
-        balance();
+            balance();
     }
 
     bool remove(const string &w)
     {
         bool returnval = removeHELPER(thetree[0].children[1], w);
         if (!balanced())
-        balance();
+            balance();
         return returnval;
     }
 
-
     size_t find (const string &d);
 
+    tnode getMinWord(size_t &r);
+
     tnode getMax();
+
+    void tree_to_vine (size_t &root, int &size );
+
 
 private:
     vector<tnode> thetree;
@@ -88,11 +92,12 @@ private:
 
     int depth(size_t r);
 
-    void tree_to_vine (size_t &root, int &size );
     void vine_to_tree ( size_t &root, int size );
     int FullSize ( int size );
     void compression ( size_t &root, int count );
 
 };
+
+
 
 #endif // BST

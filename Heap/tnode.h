@@ -15,8 +15,8 @@ using std::setw;
 class tnode
 {
 public:
-    tnode(const string &w = string(), size_t p = 0, size_t l = 0) : word(w), size(1),
-        paragraphs(1,p), lines(1,l), children {0,0} {}
+    tnode(const string &w = string(), size_t p = 0, size_t l = 0) :  word(w), children {0,0}, size(1),
+        paragraphs(1,p), lines(1,l) {}
 
     void add(size_t p, size_t l)
     {
@@ -63,13 +63,14 @@ public:
     friend
     ostream& operator<<(ostream& outs, const tnode &n)
     {
-        outs<<"Frequency: "<<n.size<<" "<<n.word<<endl;
-//        outs<<setw(10)<<"Paragraph"<<setw(10)<<"Line"<<endl;
+        outs<<n.word<<", Frequency: "<<n.size<<endl;
+        outs<<setw(10)<<std::left<<"Paragraph"<<setw(10)<<"Line"<<endl;
 
-//        for (size_t i = 0; i < n.size; ++i)
-//        {
-//            outs<<setw(10)<<n.paragraphs[i]<<setw(10)<<n.lines[i]<<endl;
-//        }
+        for (size_t i = 0; i < n.size; ++i)
+        {
+            outs<<setw(10)<<n.paragraphs[i]<<setw(10)<<n.lines[i]<<endl;
+        }
+        outs<<std::right;
         return outs;
     }
 

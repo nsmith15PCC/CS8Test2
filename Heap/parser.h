@@ -6,7 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include "torchard.h"
+#include "horchard.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ public:
     ~parser();
 
     void checkFile(ifstream &in, string &filename);
-    void getText(ifstream &in, string filename, torchard& orchard);
+    void getText(ifstream &in, string filename, horchard& orchard);
     string contraction(string word);
 
 };

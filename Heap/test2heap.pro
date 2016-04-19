@@ -8,8 +8,11 @@ HEADERS += \
     hnode.h \
     heap.h \
     horchard.h \
-    tnode.h
+    tnode.h \
+    parser.h
 
 SOURCES += \
     horchard.cpp \
-    main.cpp
+    main.cpp \
+    parser.cpp \
+    heap.cpp

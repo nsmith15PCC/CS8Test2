@@ -6,8 +6,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <iomanip>
 
 using std::vector;
+using std::ostream;
+using std::endl;
+using std::setw;
 
 class horchard
 {
@@ -16,7 +20,7 @@ public:
 
     void insert(const string &w, size_t p, size_t l)
     {
-        theorchard.at(w.front() - 'A').push(w, p, l);
+        theorchard.at('Z' - w.front()).push(w, p, l);
         ++words;
     }
 
@@ -47,12 +51,14 @@ public:
 
     vector<size_t> wordsperLetter();
 
-    vector<tnode> maxofEach();
+    vector<tnode> maxofEach(ostream &outs);
 
-    size_t paragraphs, lines, syllables, words;
+    size_t paragraphs, lines, syllables, words, sentences;
 
 private:
     vector<heap> theorchard;
 };
+
+ostream& operator<<(ostream& outs, horchard &h);
 
 #endif // HORCHARD
