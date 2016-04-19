@@ -26,19 +26,22 @@ void parser::checkFile(ifstream &in, string &filename)
 
 void parser::getText(ifstream &in, string filename, torchard& orchard)
 {
+
     string line, word;
     int pos, paragraphs, lines;
     in.open("warandpeace.txt");
+
     stringstream ss;
 
     while(!in.eof())
     {
         getline(in,line);
         if(line == "")
-            paragraphs++;
+            ++paragraphs;
         else
         {
             lines++;
+
             while((pos = line.find_first_not_of(" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!.?")) < string::npos)
                 line[pos] = ' ';
             while((pos = line.find_first_of(".?!")) < string::npos)
