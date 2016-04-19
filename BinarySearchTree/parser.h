@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
+#include <string>
 #include "torchard.h"
 
 using namespace std;
@@ -15,7 +16,7 @@ public:
     parser();
     ~parser();
 
-    void checkFile(ifstream &in, string filename);
+    void checkFile(ifstream &in, string &filename);
     void getText(ifstream &in, string filename, torchard& orchard);
     string edit(string line);
     void feed(torchard &orchard, string line);
