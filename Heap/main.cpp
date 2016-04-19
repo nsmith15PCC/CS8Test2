@@ -30,14 +30,23 @@ int main()
         {
             theorchard.insert(word, 1, 1);
         }
-//        cout<<"last line = "<<line<<endl;
-
     }
 
-    cout<< theorchard.size();
+    cout<< "The Size = "<<theorchard.size()<<endl;
+
+    vector<size_t> perletter = theorchard.wordsperLetter();
+
+    for (size_t i = 0; i < perletter.size(); ++i)
+        cout<<char('A' + i)<<" "<<perletter.at(i)<<endl;
+
+    vector<tnode> maxeach = theorchard.maxofEach();
+
+    for (size_t i = 0; i < maxeach.size(); ++i)
+        cout<<maxeach[i]<<endl;
+
     b = clock();
 
-    cout<<"Time = "<<(double)(b-a)/CLOCKS_PER_SEC<<endl;
+    cout<<"Runtime = "<<(double)(b-a)/CLOCKS_PER_SEC<<endl;
 
 
     return 0;

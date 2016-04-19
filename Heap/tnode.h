@@ -63,13 +63,14 @@ public:
     friend
     ostream& operator<<(ostream& outs, const tnode &n)
     {
-        outs<<"Frequency: "<<n.size<<endl<<n.word<<endl;
-        outs<<setw(10)<<"Paragraph"<<setw(10)<<"Line"<<endl;
+        outs<<"Frequency: "<<n.size<<" "<<n.word<<endl;
+//        outs<<setw(10)<<"Paragraph"<<setw(10)<<"Line"<<endl;
 
-        for (size_t i = 0; i < n.size; ++i)
-        {
-            outs<<setw(10)<<n.paragraphs[i]<<setw(10)<<n.lines[i]<<endl;
-        }
+//        for (size_t i = 0; i < n.size; ++i)
+//        {
+//            outs<<setw(10)<<n.paragraphs[i]<<setw(10)<<n.lines[i]<<endl;
+//        }
+        return outs;
     }
 
     friend
@@ -83,7 +84,5 @@ public:
     size_t children[2], size;
     vector<size_t> paragraphs, lines;
 };
-
-
 
 #endif // TNODE
