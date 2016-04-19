@@ -18,8 +18,7 @@ public:
 
     void checkFile(ifstream &in, string &filename);
     void getText(ifstream &in, string filename, torchard& orchard);
-    string edit(string line);
-    void feed(torchard &orchard, string line);
+    string contraction(string word);
 
 };
 
