@@ -24,7 +24,7 @@ void parser::checkFile(ifstream &in, string &filename)
     in.close();
 }
 
-void parser::getText(ifstream &in, string filename, torchard& orchard)
+void parser::getText(ifstream &in, string filename, horchard& orchard)
 {
 
     string line, word, word2;

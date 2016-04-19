@@ -14,7 +14,7 @@ int main()
 //    ifstream ifs("warandpeace.txt");
     ifstream ifs;
     torchard theorchard;
-    string line, filename;
+    string filename;
     clock_t a, b;
     parser block;
     a = clock();

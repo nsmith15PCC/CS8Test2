@@ -53,7 +53,7 @@ public:
 
     vector<tnode> maxofEach(ostream &outs);
 
-    size_t paragraphs, lines, syllables, words;
+    size_t paragraphs, lines, syllables, words, sentences;
 
 private:
     vector<heap> theorchard;
