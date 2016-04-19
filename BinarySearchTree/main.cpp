@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <set>
 #include <fstream>
 #include <sstream>
 #include <ctime>
@@ -35,23 +36,11 @@ int main()
 //        }
 //    }
 
-//    block.checkFile(ifs, filename);
+    block.checkFile(ifs, filename);
 
     block.getText(ifs, filename, theorchard);
 
-    theorchard.balance();
-
-    cout<< "The Size = "<<theorchard.size()<<endl;
-
-    vector<size_t> perletter = theorchard.wordsperLetter();
-
-    vector<tnode> maxeach = theorchard.mostFrequentWords();
-
-    for (size_t i = 0; i < perletter.size(); ++i)
-        cout<<char('A' + i)<<" "<<perletter.at(i)<<endl;
-
-    for (size_t i = 0; i < maxeach.size(); ++i)
-        cout<<maxeach[i]<<endl;
+    cout<<theorchard;
 
     b = clock();
 

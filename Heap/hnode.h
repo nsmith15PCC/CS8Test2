@@ -56,6 +56,7 @@ public:
     ostream& operator<<(ostream& outs, const hnode &n)
     {
         outs<<setw(10)<<n.paragraph<<setw(10)<<n.line;
+        return outs;
     }
 
     string word;

@@ -16,7 +16,7 @@ void bst::insertHELPER (size_t &r, const string &w, size_t p, size_t l)
     else
     {
         r = thetree.size();
-        thetree.push_back(tnode(w, p, l));
+        thetree.emplace_back(w, p, l);
     }
 }
 
@@ -168,5 +168,26 @@ void bst::compression ( size_t &root, int count )
         scanner = thetree[scanner].children[1];
         thetree[child].children[1] = thetree[scanner].children[0];
         thetree[scanner].children[0] = child;
+    }
+}
+
+tnode bst::getMinWord(size_t &r)
+{
+    if (thetree[r].children[0])
+    {
+        return getMinWord(thetree[r].children[0]);
+    }
+    else
+    {
+        tnode returnval = thetree.at(r);
+        size_t dlt = r;
+        r = thetree[r].children[1];
+        if (dlt == (thetree.size() - 1))
+            thetree.pop_back();
+        else
+            deallocate(root(), dlt);
+        if (!balanced())
+            balance();
+        return returnval;
     }
 }

@@ -32,21 +32,13 @@ int main()
         }
     }
 
-    cout<< "The Size = "<<theorchard.size()<<endl;
+cout<<theorchard;
 
-    vector<size_t> perletter = theorchard.wordsperLetter();
-
-    for (size_t i = 0; i < perletter.size(); ++i)
-        cout<<char('A' + i)<<" "<<perletter.at(i)<<endl;
-
-    vector<tnode> maxeach = theorchard.maxofEach();
-
-    for (size_t i = 0; i < maxeach.size(); ++i)
-        cout<<maxeach[i]<<endl;
 
     b = clock();
 
     cout<<"Runtime = "<<(double)(b-a)/CLOCKS_PER_SEC<<endl;
+
 
 
     return 0;

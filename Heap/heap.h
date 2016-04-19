@@ -11,7 +11,7 @@ using std::vector;
 class heap
 {
 public:
-    heap() { theheap.reserve(1024); }
+    heap() { theheap.reserve(65536); }
 
     size_t size() {return theheap.size();}
 
@@ -20,7 +20,7 @@ public:
     void push(const string &w, size_t p, size_t l)
     {
         theheap.emplace_back(w, p, l);
-        std::push_heap(theheap.begin(), theheap.end());
+        std::push_heap(theheap.begin(), theheap.end(), [](const hnode &x, const hnode &y){return x.word > y.word;}  );
     }
 
     const hnode &top() const
@@ -30,7 +30,7 @@ public:
 
     void pop()
     {
-        std::pop_heap(theheap.begin(), theheap.end());
+        std::pop_heap(theheap.begin(), theheap.end(), [](const hnode &x, const hnode &y){return x.word > y.word; } );
         theheap.pop_back();
     }
 
