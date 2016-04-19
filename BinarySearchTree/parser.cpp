@@ -26,6 +26,7 @@ void parser::checkFile(ifstream &in, string &filename)
 
 void parser::getText(ifstream &in, string filename, torchard& orchard)
 {
+
     string line, word;
     int pos, paragraphs, lines;
     in.open("warandpeace.txt");
