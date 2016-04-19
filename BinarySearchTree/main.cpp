@@ -44,7 +44,7 @@ int main()
     double avgNum = theorchard.words*1./theorchard.sentences, syllables=avgNum/3;
     int level = ((0.39*avgNum)+(11.8*syllables)-15.59);
 
-    cout<< "The number of wrods = "<<theorchard.size()<<endl
+    cout<< "The number of words = "<<theorchard.size()<<endl
         << "The number of paragraphs = "<<theorchard.paragraphs<<endl
         << "The reading level = "<< level<<endl;
 
