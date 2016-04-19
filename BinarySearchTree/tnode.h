@@ -15,8 +15,8 @@ using std::setw;
 class tnode
 {
 public:
-    tnode(const string &w = string(), size_t p = 0, size_t l = 0) : word(w), size(1),
-        paragraphs(1,p), lines(1,l), children {0,0} {}
+    tnode(const string &w = string(), size_t p = 0, size_t l = 0) : word(w), children {0,0}, size(1),
+        paragraphs(1,p), lines(1,l) {}
 
     void add(size_t p, size_t l)
     {

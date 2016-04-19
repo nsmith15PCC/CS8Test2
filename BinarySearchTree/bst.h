@@ -58,11 +58,16 @@ public:
     {
         ++thesize;
         insertHELPER(thetree[0].children[1], w, p, l);
+        if (!balanced())
+        balance();
     }
 
     bool remove(const string &w)
     {
-        return removeHELPER(thetree[0].children[1], w);
+        bool returnval = removeHELPER(thetree[0].children[1], w);
+        if (!balanced())
+        balance();
+        return returnval;
     }
 
 
