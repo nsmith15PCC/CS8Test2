@@ -28,7 +28,7 @@ void parser::getText(ifstream &in, string filename, torchard& orchard)
 {
 
     string line, word, word2;
-    int pos, paragraphs, lines, words, sentences;
+    int pos, paragraphs = 1, lines = 0, words = 0, sentences = 0;
     in.open("warandpeace.txt");
 
     stringstream ss;
@@ -38,7 +38,10 @@ void parser::getText(ifstream &in, string filename, torchard& orchard)
         pos = 0;
         getline(in,line);
         if(line == "")
+        {
             ++paragraphs;
+            lines = 1;
+        }
         else
         {
             lines++;
