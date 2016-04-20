@@ -32,7 +32,7 @@ void torchard::balance()
         (*it).balance();
 }
 
-vector<tnode> torchard::mostFrequentWords(std::__1::ostream &outs)
+vector<tnode> torchard::mostFrequentWords(std::ostream &outs)
 {
     vector<tnode> theMaxes;
     while (!theorchard.empty())

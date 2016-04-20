@@ -39,7 +39,7 @@ int main()
 
     block.getText(ifs, filename, theorchard);
 
-    cout<<theorchard;
+//    cout<<theorchard;
 
     b = clock();
 
@@ -51,7 +51,7 @@ int main()
     {
         cout<<"Please enter your destination filename: ";
         getline(cin, line);
-        ofstream ofs (line);
+        ofstream ofs (line+".txt");
         theorchard = torchard();
         block.getText(ifs, filename, theorchard);
     ofs<<theorchard;
