@@ -68,7 +68,8 @@ ostream &operator<<(ostream &outs, torchard &t)
 
     outs<<endl<<endl<<"SUMMARY"<<endl;
 
-    outs<<"Word count: "<<theSize<<", Paragraphs: "<<t.paragraphs<<", Reading Level: "<<endl
+    outs<<"Word count: "<<theSize<<", Paragraphs: "<<t.paragraphs<<", Reading Level: "
+       <<endl
        <<"Words beginning with each letter:"<<endl;
 
     for (size_t i = 0; i < perletter.size(); ++i)

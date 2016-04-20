@@ -36,8 +36,11 @@ void parser::getText(ifstream &in, string filename, horchard& orchard)
     {        
         pos = 0;
         getline(in,line);
-        if(line == "")
+        if(line.size() < 2)
+        {
             ++paragraphs;
+            lines = 0;
+        }
         else
         {
             lines++;
