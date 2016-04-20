@@ -61,15 +61,14 @@ size_t torchard::size()
 ostream &operator<<(ostream &outs, torchard &t)
 {
     size_t theSize = t.size();
-
+    double level = theSize*1./t.sentences*0.39+t.syllables*1./theSize*11.8-15.59;
     vector<size_t> perletter = t.wordsperLetter();
 
     vector<tnode> maxeach = t.mostFrequentWords(outs);
 
     outs<<endl<<endl<<"SUMMARY"<<endl;
 
-    outs<<"Word count: "<<theSize<<", Paragraphs: "<<t.paragraphs<<", Reading Level: "
-       <<endl
+    outs<<"Word count: "<<theSize<<", Paragraphs: "<<t.paragraphs<<", Reading Level: "<< int(level)<<endl
        <<"Words beginning with each letter:"<<endl;
 
     for (size_t i = 0; i < perletter.size(); ++i)

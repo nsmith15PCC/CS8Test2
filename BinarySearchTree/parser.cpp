@@ -28,7 +28,7 @@ void parser::getText(ifstream &in, string filename, torchard& orchard)
 {
 
     string line, word, word2;
-    size_t pos, paragraphs = 1, lines = 0, words = 0, sentences = 0;
+    int pos, paragraphs = 1, lines = 0, words = 0, sentences = 0, syllables = 0;
     in.open("warandpeace.txt");
 
     stringstream ss;
@@ -70,12 +70,25 @@ void parser::getText(ifstream &in, string filename, torchard& orchard)
                     word[0] = toupper(word[0]);
                     orchard.insert(word, paragraphs, lines);
                     words++;
+                    for(pos = 0; pos < word.length(); ++pos)
+                    {
+                        if(toupper(word[pos]) == 'A' || toupper(word[pos]) == 'E' || toupper(word[pos]) == 'I'
+                           || toupper(word[pos]) == 'O' || toupper(word[pos]) == 'U' ||toupper(word[pos]) == 'Y')
+                            syllables++;
+                    }
                 }
                 if(word2.length()>0)
                 {
                     orchard.insert(word2, paragraphs, lines);
                     words++;
+                    for(pos = 0; pos < word2.length(); ++pos)
+                    {
+                        if(toupper(word2[pos]) == 'A' || toupper(word2[pos]) == 'E' || toupper(word2[pos]) == 'I'
+                           || toupper(word2[pos]) == 'O' || toupper(word2[pos]) == 'U' ||toupper(word2[pos]) == 'Y')
+                            syllables++;
+                    }
                 }
+
             }
             ss.clear();
         }
@@ -83,6 +96,7 @@ void parser::getText(ifstream &in, string filename, torchard& orchard)
     orchard.paragraphs = paragraphs;
     orchard.words = words;
     orchard.sentences = sentences;
+    orchard.syllables = syllables;
     in.close();
 }
 

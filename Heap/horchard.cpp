@@ -40,21 +40,22 @@ vector<tnode> horchard::maxofEach(ostream &outs)
 ostream& operator<<(ostream& outs, horchard &h)
 {
     size_t theSize = h.size();
+    double level = theSize*1./h.sentences*0.39+h.syllables*1./theSize*11.8-15.59;
 
     vector<size_t> perletter = h.wordsperLetter();
 
-    vector<tnode> maxeach = h.maxofEach(outs);
+//    vector<tnode> maxeach = h.maxofEach(outs);
 
     outs<<endl<<endl<<"SUMMARY"<<endl;
 
-    outs<<"Word count: "<<theSize<<", Paragraphs: "<<h.paragraphs<<", Reading Level: "<<endl
+    outs<<"Word count: "<<theSize<<", Paragraphs: "<<h.paragraphs<<", Reading Level: "<< int(level) <<endl
        <<"Words beginning with each letter:"<<endl;
 
     for (size_t i = 0; i < perletter.size(); ++i)
         outs<<char('A' + i)<<" "<<perletter.at(i)<<endl;
 
     outs<<endl<<"Most Frequent Words:"<<endl<<setw(16)<<std::left<<"Word"<<setw(7)<<"Frequency"<<endl;
-    for (size_t i = 0; i < maxeach.size(); ++i)
-        outs<<setw(16)<<maxeach.at(i).word<<setw(7)<<maxeach.at(i).size<<endl;
+//    for (size_t i = 0; i < maxeach.size(); ++i)
+//        outs<<setw(16)<<maxeach.at(i).word<<setw(7)<<maxeach.at(i).size<<endl;
     return outs;
 }
