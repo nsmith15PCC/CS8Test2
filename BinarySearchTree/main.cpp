@@ -39,7 +39,7 @@ int main()
 
     block.getText(ifs, filename, theorchard);
 
-//    cout<<theorchard;
+    cout<<theorchard;
 
     b = clock();
 

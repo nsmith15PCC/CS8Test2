@@ -40,7 +40,7 @@ void parser::getText(ifstream &in, string filename, torchard& orchard)
         if(line == "")
         {
             ++paragraphs;
-            lines = 1;
+            lines = 0;
         }
         else
         {
