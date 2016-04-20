@@ -19,23 +19,25 @@ public:
 
     void push(const string &w, size_t p, size_t l)
     {
-        theheap.emplace_back(w, p, l);
-        std::push_heap(theheap.begin(), theheap.end(), [](const hnode &x, const hnode &y){return x.word > y.word;}  );
+        hnode *ptr = new hnode(w, p, l);
+        theheap.push_back(ptr);
+        std::push_heap(theheap.begin(), theheap.end(), []( hnode *x, hnode *y){return x->word > y->word;}  );
     }
 
     const hnode &top() const
     {
-        return theheap.front();
+        return *theheap.front();
     }
 
     void pop()
     {
-        std::pop_heap(theheap.begin(), theheap.end(), [](const hnode &x, const hnode &y){return x.word > y.word; } );
+        std::pop_heap(theheap.begin(), theheap.end(),  []( hnode *x, hnode *y){return x->word > y->word;} );
+        delete theheap.back();
         theheap.pop_back();
     }
 
 private:
-    vector<hnode> theheap;
+    vector<hnode*> theheap;
     void reheapifyUp(size_t child_index);
     void reheapifyDown(size_t parent_index);
 
